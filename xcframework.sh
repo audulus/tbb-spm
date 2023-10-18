@@ -18,4 +18,12 @@ cmake .. \
    -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 
 make -j 12
 
-cd ../../
+cd ..
+
+xcodebuild -create-xcframework \
+           -library build/appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.dylib \
+           -headers include \
+           -library build_ios/appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.dylib \
+           -headers include \
+           -output ../tbb.xcframework
+
