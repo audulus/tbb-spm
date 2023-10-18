@@ -15,7 +15,7 @@ let package = Package(
         .binaryTarget(
             name: "tbb",
             url: "https://github.com/audulus/tbb-spm/releases/download/v1/tbb.xcframework.zip",
-            checksum: "19adabd7c4ff8c9247ecc8156d0cc7d568e235bbb011011c4a5d4342349325ae"
+            checksum: "f0668183810edd95442c51ba1c5f110634b9e5fff0a8f9799598f641ad87b302"
         )
     ]
 )
