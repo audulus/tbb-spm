@@ -27,3 +27,5 @@ xcodebuild -create-xcframework \
            -headers include \
            -output ../tbb.xcframework
 
+cd ..
+zip -r tbb.xcframework.zip tbb.xcframework
