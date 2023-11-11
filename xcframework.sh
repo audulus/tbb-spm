@@ -1,7 +1,6 @@
 
 set -x
-rm -rf oneTBB-2021.10.0
-rm -f v2021.10.0.tar.gz 
+rm -rf oneTBB-2021.10.0 v2021.10.0.tar.gz tbb.xcframework tbb.xcframework.zip
 
 wget https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.10.0.tar.gz
 tar zxf v2021.10.0.tar.gz
