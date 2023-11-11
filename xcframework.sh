@@ -14,9 +14,9 @@ make -j 12 tbb
 # ios build
 cd ..
 mkdir build_ios && cd build_ios
-cmake .. \
-   -DCMAKE_SYSTEM_NAME=iOS \
-   -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 
+cmake -DCMAKE_SYSTEM_NAME=iOS \
+      -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
+      ..
 make -j 12 tbb target=ios
 cd ..
 
