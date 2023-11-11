@@ -29,3 +29,4 @@ xcodebuild -create-xcframework \
 
 cd ..
 zip -r tbb.xcframework.zip tbb.xcframework
+swift package compute-checksum tbb.xcframework.zip
