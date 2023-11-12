@@ -50,7 +50,7 @@ make -j 12 tbb target=ios
 mkdir tbb.framework
 mkdir tbb.framework/Headers
 cp -R ../include/ tbb.framework/Headers
-cp ../../Info-iOS.plist tbb.framework
+cp ../../Info-iOS.plist tbb.framework/Info.plist
 lipo -create appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib -output tbb.framework/tbb
 
 cd ..
