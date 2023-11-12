@@ -11,6 +11,7 @@
 		29AF90A42B00557700E9FA57 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF90A32B00557700E9FA57 /* ContentView.swift */; };
 		29AF90A62B00557800E9FA57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29AF90A52B00557800E9FA57 /* Assets.xcassets */; };
 		29AF90AA2B00557800E9FA57 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29AF90A92B00557800E9FA57 /* Preview Assets.xcassets */; };
+		29AF90B12B0055B600E9FA57 /* tbb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29AF90B02B0055B600E9FA57 /* tbb.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		29AF90A52B00557800E9FA57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29AF90A72B00557800E9FA57 /* TBB_Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TBB_Test.entitlements; sourceTree = "<group>"; };
 		29AF90A92B00557800E9FA57 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		29AF90B02B0055B600E9FA57 /* tbb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = tbb.xcframework; path = ../../tbb.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29AF90B12B0055B600E9FA57 /* tbb.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +55,7 @@
 		29AF90A02B00557700E9FA57 /* TBB-Test */ = {
 			isa = PBXGroup;
 			children = (
+				29AF90B02B0055B600E9FA57 /* tbb.xcframework */,
 				29AF90A12B00557700E9FA57 /* TBB_TestApp.swift */,
 				29AF90A32B00557700E9FA57 /* ContentView.swift */,
 				29AF90A52B00557800E9FA57 /* Assets.xcassets */,
