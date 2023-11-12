@@ -30,7 +30,7 @@ mkdir tbb.framework/Versions
 mkdir tbb.framework/Versions/A
 mkdir tbb.framework/Versions/A/Resources
 mkdir tbb.framework/Versions/A/Headers
-cp -R ../include/ tbb.framework/Versions/A/Headers
+cp -R ../include/oneapi/tbb/ tbb.framework/Versions/A/Headers
 lipo -create appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib -output tbb.framework/Versions/A/tbb
 cp ../../Info-macOS.plist tbb.framework/Versions/A/Resources/Info.plist
 ln -s A tbb.framework/Versions/Current
@@ -49,7 +49,7 @@ cmake -DCMAKE_SYSTEM_NAME=iOS \
 make -j 12 tbb target=ios
 mkdir tbb.framework
 mkdir tbb.framework/Headers
-cp -R ../include/ tbb.framework/Headers
+cp -R ../include/oneapi/tbb/ tbb.framework/Headers
 cp ../../Info-iOS.plist tbb.framework/Info.plist
 lipo -create appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib -output tbb.framework/tbb
 
