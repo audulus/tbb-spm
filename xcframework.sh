@@ -10,6 +10,9 @@ wget https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.10.0.tar.gz
 tar zxf v2021.10.0.tar.gz
 cd oneTBB-2021.10.0
 
+# Apply patch to header so the headers play nice with frameworks (ugh)
+patch include/oneapi/tbb/tbb_allocator.h ../tbb.patch
+
 # [Apple says](https://developer.apple.com/documentation/xcode/creating-a-multi-platform-binary-framework-bundle): 
 # Avoid using dynamic library files (.dylib files) for dynamic linking.
 # An XCFramework can include dynamic library files, but only macOS supports these libraries for dynamic linking.
