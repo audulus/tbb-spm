@@ -55,7 +55,7 @@ mkdir tbb.framework
 mkdir tbb.framework/Headers
 cp -R ../include/oneapi/tbb/ tbb.framework/Headers
 cp ../../Info-iOS.plist tbb.framework/Info.plist
-install_name_tool -id @executable_path/tbb.framework/tbb appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib
+install_name_tool -id @executable_path/Frameworks/tbb.framework/tbb appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib
 lipo -create appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib -output tbb.framework/tbb
 
 cd ..
