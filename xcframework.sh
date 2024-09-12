@@ -34,7 +34,7 @@ mkdir tbb.framework/Versions/A
 mkdir tbb.framework/Versions/A/Resources
 mkdir tbb.framework/Versions/A/Headers
 cp -R ../include/oneapi/tbb/ tbb.framework/Versions/A/Headers
-install_name_tool -id @rpath/tbb.framework/tbb appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib
+install_name_tool -id @executable_path/tbb.framework/tbb appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib
 lipo -create appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib -output tbb.framework/Versions/A/tbb
 cp ../../Info-macOS.plist tbb.framework/Versions/A/Resources/Info.plist
 ln -s A tbb.framework/Versions/Current
@@ -55,7 +55,7 @@ mkdir tbb.framework
 mkdir tbb.framework/Headers
 cp -R ../include/oneapi/tbb/ tbb.framework/Headers
 cp ../../Info-iOS.plist tbb.framework/Info.plist
-install_name_tool -id @rpath/tbb.framework/tbb appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib
+install_name_tool -id @executable_path/tbb.framework/tbb appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib
 lipo -create appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.10.dylib -output tbb.framework/tbb
 
 cd ..
