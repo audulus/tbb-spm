@@ -38,7 +38,8 @@ cd ..
 mkdir build_ios && cd build_ios
 cmake .. -DCMAKE_SYSTEM_NAME=iOS \
       -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
-      -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On 
+      -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On \
+      -DCMAKE_INSTALL_RPATH=@executable_path/Frameworks/tbb.framework/tbb
 make -j 12 target=ios
 mkdir appleclang_15.0_cxx11_64_release/tbb.framework/Headers
 cp -R ../include/oneapi/tbb/ appleclang_15.0_cxx11_64_release/tbb.framework/Headers
