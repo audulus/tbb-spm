@@ -24,47 +24,33 @@ patch include/oneapi/tbb/tbb_allocator.h ../tbb.patch
 
 # macOS build
 mkdir build && cd build
-cmake ..
-make -j 12 tbb
-
-# Framework directory structure: https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/FrameworkAnatomy.html
-mkdir tbb.framework
-mkdir tbb.framework/Versions
-mkdir tbb.framework/Versions/A
-mkdir tbb.framework/Versions/A/Resources
-mkdir tbb.framework/Versions/A/Headers
-cp -R ../include/oneapi/tbb/ tbb.framework/Versions/A/Headers
-install_name_tool -id @executable_path/tbb.framework/tbb appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.13.dylib
-lipo -create appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.13.dylib -output tbb.framework/Versions/A/tbb
-cp ../../Info-macOS.plist tbb.framework/Versions/A/Resources/Info.plist
-ln -s A tbb.framework/Versions/Current
-ln -s Versions/Current/tbb tbb.framework/tbb
-ln -s Versions/Current/Resources tbb.framework/Resources
-ln -s Versions/Current/Headers tbb.framework/Headers
+cmake .. -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On
+make -j 12 
 
 cd ..
 
 # ios build
 
 mkdir build_ios && cd build_ios
-cmake -DCMAKE_SYSTEM_NAME=iOS \
+cmake .. -DCMAKE_SYSTEM_NAME=iOS \
       -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
-      ..
-make -j 12 tbb target=ios
-mkdir tbb.framework
-mkdir tbb.framework/Headers
-cp -R ../include/oneapi/tbb/ tbb.framework/Headers
-cp ../../Info-iOS.plist tbb.framework/Info.plist
-install_name_tool -id @executable_path/Frameworks/tbb.framework/tbb appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.13.dylib
-lipo -create appleclang_15.0_cxx11_64_relwithdebinfo/libtbb.12.13.dylib -output tbb.framework/tbb
+      -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On 
+make -j 12 target=ios
 
 cd ..
 
 xcodebuild -create-xcframework \
-           -framework build/tbb.framework \
-           -framework build_ios/tbb.framework \
+           -framework build/appleclang_15.0_cxx11_64_release/tbb.framework \
+           -framework build_ios/appleclang_15.0_cxx11_64_release/tbb.framework \
            -output ../tbb.xcframework
+
+xcodebuild -create-xcframework \
+           -framework build/appleclang_15.0_cxx11_64_release/tbbmalloc.framework \
+           -framework build_ios/appleclang_15.0_cxx11_64_release/tbbmalloc.framework \
+           -output ../tbbmalloc.xcframework
 
 cd ..
 zip -r tbb.xcframework.zip tbb.xcframework
+zip -r tbbmalloc.xcframework.zip tbbmalloc.xcframework
 swift package compute-checksum tbb.xcframework.zip
+swift package compute-checksum tbbmalloc.xcframework.zip

@@ -4,3 +4,5 @@ oneTBB-2021.13.0
 .DS_Store
 tbb.xcframework
 tbb.xcframework.zip
+tbbmalloc.xcframework
+tbbmalloc.xcframework.zip
