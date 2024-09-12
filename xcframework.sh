@@ -12,6 +12,8 @@ wget https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.13.0.tar.gz
 tar zxf v2021.13.0.tar.gz
 cd oneTBB-2021.13.0
 
+# See https://github.com/Homebrew/homebrew-core/blob/master/Formula/t/tbb.rb
+
 # Apply patch to header so the headers play nice with frameworks (ugh)
 patch include/oneapi/tbb/tbb_allocator.h ../tbb.patch
 
