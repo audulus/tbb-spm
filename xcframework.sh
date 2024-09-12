@@ -28,6 +28,8 @@ patch include/oneapi/tbb/tbb_allocator.h ../tbb.patch
 mkdir build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On
 make -j 12 
+mkdir appleclang_15.0_cxx11_64_release/tbb.framework/Versions/12.13/Headers
+cp -R ../include/oneapi/tbb/ appleclang_15.0_cxx11_64_release/tbb.framework/Versions/12.13/Headers
 
 cd ..
 
@@ -38,6 +40,8 @@ cmake .. -DCMAKE_SYSTEM_NAME=iOS \
       -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
       -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On 
 make -j 12 target=ios
+mkdir appleclang_15.0_cxx11_64_release/tbb.framework/Headers
+cp -R ../include/oneapi/tbb/ appleclang_15.0_cxx11_64_release/tbb.framework/Headers
 
 cd ..
 
