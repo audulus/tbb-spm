@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "tbb",
-            targets: ["tbb", "tbbmalloc])
+            targets: ["tbb", "tbbmalloc"])
     ],
     targets: [
         .binaryTarget(
