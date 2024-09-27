@@ -1,3 +1,4 @@
+#!/bin/zsh
 
 set -euxo pipefail
 
@@ -26,12 +27,14 @@ patch include/oneapi/tbb/tbb_allocator.h ../tbb.patch
 
 # So we have to build frameworks for each target.
 
+NAME=appleclang_16.0_cxx11_64_release
+
 # macOS build
 mkdir build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On
 make -j 12 
-mkdir appleclang_15.0_cxx11_64_release/tbb.framework/Versions/12.13/Headers
-cp -R ../include/oneapi/tbb/ appleclang_15.0_cxx11_64_release/tbb.framework/Versions/12.13/Headers
+mkdir $NAME/tbb.framework/Headers
+cp -R ../include/oneapi/tbb $NAME/tbb.framework/Headers
 
 cd ..
 
@@ -43,19 +46,19 @@ cmake .. -DCMAKE_SYSTEM_NAME=iOS \
       -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On \
       -DCMAKE_INSTALL_RPATH=@executable_path/Frameworks/tbb.framework/tbb
 make -j 12 target=ios
-mkdir appleclang_15.0_cxx11_64_release/tbb.framework/Headers
-cp -R ../include/oneapi/tbb/ appleclang_15.0_cxx11_64_release/tbb.framework/Headers
+mkdir $NAME/tbb.framework/Headers
+cp -R ../include/oneapi/tbb/ $NAME/tbb.framework/Headers
 
 cd ..
 
 xcodebuild -create-xcframework \
-           -framework build/appleclang_15.0_cxx11_64_release/tbb.framework \
-           -framework build_ios/appleclang_15.0_cxx11_64_release/tbb.framework \
+           -framework build/$NAME/tbb.framework \
+           -framework build_ios/$NAME/tbb.framework \
            -output ../tbb.xcframework
 
 xcodebuild -create-xcframework \
-           -framework build/appleclang_15.0_cxx11_64_release/tbbmalloc.framework \
-           -framework build_ios/appleclang_15.0_cxx11_64_release/tbbmalloc.framework \
+           -framework build/$NAME/tbbmalloc.framework \
+           -framework build_ios/$NAME/tbbmalloc.framework \
            -output ../tbbmalloc.xcframework
 
 cd ..
