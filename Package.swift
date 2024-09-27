@@ -14,13 +14,13 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "tbb",
-            url: "https://github.com/audulus/tbb-spm/releases/download/v12/tbb.xcframework.zip",
-            checksum: "d9ebbcb4414cb31fac26ed5eaa6765a55453830d5f61870554f8e1466613e772"
+            url: "https://github.com/audulus/tbb-spm/releases/download/v13/tbb.xcframework.zip",
+            checksum: "e4dc6420df74d2c7af389a175a8714458a7a912eac72f4190eb46b7de9ff8471"
         ),
         .binaryTarget(
             name: "tbbmalloc",
-            url: "https://github.com/audulus/tbb-spm/releases/download/v12/tbbmalloc.xcframework.zip",
-            checksum: "6835b08eb8d8dad71b3684d25047f7668be8480408063b9adbf53e7efff1e9b5"
+            url: "https://github.com/audulus/tbb-spm/releases/download/v13/tbbmalloc.xcframework.zip",
+            checksum: "241fb9b0fa72d61df07a11ad8af988c57b28ad7f489890c4fa3d98c59ad4ce49"
         )
     ]
 )
