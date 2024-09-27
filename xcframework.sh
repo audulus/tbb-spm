@@ -33,8 +33,6 @@ NAME=appleclang_16.0_cxx11_64_release
 mkdir build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On
 make -j 12 
-mkdir $NAME/tbb.framework/Headers
-cp -R ../include/oneapi/tbb $NAME/tbb.framework/Headers
 
 cd ..
 
@@ -46,8 +44,6 @@ cmake .. -DCMAKE_SYSTEM_NAME=iOS \
       -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On \
       -DCMAKE_INSTALL_RPATH=@executable_path/Frameworks/tbb.framework/tbb
 make -j 12 target=ios
-mkdir $NAME/tbb.framework/Headers
-cp -R ../include/oneapi/tbb/ $NAME/tbb.framework/Headers
 
 cd ..
 
