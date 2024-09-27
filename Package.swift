@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:6.0
 import PackageDescription
 
 let package = Package(
@@ -9,9 +9,12 @@ let package = Package(
     products: [
         .library(
             name: "tbb",
-            targets: ["tbb", "tbbmalloc"])
+            targets: ["tbb_headers", "tbb", "tbbmalloc"])
     ],
     targets: [
+        .target(
+            name: "tbb_headers"
+        ),
         .binaryTarget(
             name: "tbb",
             url: "https://github.com/audulus/tbb-spm/releases/download/v13/tbb.xcframework.zip",
@@ -22,5 +25,6 @@ let package = Package(
             url: "https://github.com/audulus/tbb-spm/releases/download/v13/tbbmalloc.xcframework.zip",
             checksum: "241fb9b0fa72d61df07a11ad8af988c57b28ad7f489890c4fa3d98c59ad4ce49"
         )
-    ]
+    ],
+    cxxLanguageStandard: .cxx20
 )
