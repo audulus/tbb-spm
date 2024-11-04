@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct TBB_TestApp: App {
+
+    init() {
+        test()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

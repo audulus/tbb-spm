@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		293473F62CD896E200AEA697 /* test.mm in Sources */ = {isa = PBXBuildFile; fileRef = 293473F52CD896E200AEA697 /* test.mm */; };
 		29AF90A22B00557700E9FA57 /* TBB_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF90A12B00557700E9FA57 /* TBB_TestApp.swift */; };
 		29AF90A42B00557700E9FA57 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF90A32B00557700E9FA57 /* ContentView.swift */; };
 		29AF90A62B00557800E9FA57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29AF90A52B00557800E9FA57 /* Assets.xcassets */; };
 		29AF90AA2B00557800E9FA57 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29AF90A92B00557800E9FA57 /* Preview Assets.xcassets */; };
 		29AF90B12B0055B600E9FA57 /* tbb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29AF90B02B0055B600E9FA57 /* tbb.xcframework */; };
-		29AF90B32B0055EB00E9FA57 /* tbb_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29AF90B22B0055EB00E9FA57 /* tbb_test.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		293473F42CD896E200AEA697 /* TBB-Test-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TBB-Test-Bridging-Header.h"; sourceTree = "<group>"; };
+		293473F52CD896E200AEA697 /* test.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = test.mm; sourceTree = "<group>"; };
 		29AF909E2B00557700E9FA57 /* TBB-Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TBB-Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29AF90A12B00557700E9FA57 /* TBB_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBB_TestApp.swift; sourceTree = "<group>"; };
 		29AF90A32B00557700E9FA57 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -23,7 +25,6 @@
 		29AF90A72B00557800E9FA57 /* TBB_Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TBB_Test.entitlements; sourceTree = "<group>"; };
 		29AF90A92B00557800E9FA57 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		29AF90B02B0055B600E9FA57 /* tbb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = tbb.xcframework; path = ../../tbb.xcframework; sourceTree = "<group>"; };
-		29AF90B22B0055EB00E9FA57 /* tbb_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tbb_test.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +64,8 @@
 				29AF90A52B00557800E9FA57 /* Assets.xcassets */,
 				29AF90A72B00557800E9FA57 /* TBB_Test.entitlements */,
 				29AF90A82B00557800E9FA57 /* Preview Content */,
-				29AF90B22B0055EB00E9FA57 /* tbb_test.cpp */,
+				293473F52CD896E200AEA697 /* test.mm */,
+				293473F42CD896E200AEA697 /* TBB-Test-Bridging-Header.h */,
 			);
 			path = "TBB-Test";
 			sourceTree = "<group>";
@@ -108,7 +110,7 @@
 				TargetAttributes = {
 					29AF909D2B00557700E9FA57 = {
 						CreatedOnToolsVersion = 15.0.1;
-						LastSwiftMigration = 1500;
+						LastSwiftMigration = 1610;
 					};
 				};
 			};
@@ -147,9 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29AF90B32B0055EB00E9FA57 /* tbb_test.cpp in Sources */,
 				29AF90A42B00557700E9FA57 /* ContentView.swift in Sources */,
 				29AF90A22B00557700E9FA57 /* TBB_TestApp.swift in Sources */,
+				293473F62CD896E200AEA697 /* test.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +304,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "TBB-Test/TBB-Test-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -340,6 +343,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "TBB-Test/TBB-Test-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
