@@ -6,8 +6,6 @@ rm -rf oneTBB-2021.13.0
 rm -rf v2021.13.0.tar.gz
 rm -rf tbb.xcframework
 rm -rf tbb.xcframework.zip
-rm -rf tbbmalloc.xcframework
-rm -rf tbbmalloc.xcframework.zip
 
 wget https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.13.0.tar.gz
 tar zxf v2021.13.0.tar.gz
