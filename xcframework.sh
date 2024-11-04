@@ -25,8 +25,6 @@ patch include/oneapi/tbb/tbb_allocator.h ../tbb.patch
 
 # So we have to build frameworks for each target.
 
-NAME=appleclang_16.0_cxx11_64_release
-
 # macOS build
 mkdir build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release \
@@ -42,17 +40,33 @@ mkdir build_ios && cd build_ios
 cmake .. -DCMAKE_SYSTEM_NAME=iOS \
          -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
          -DCMAKE_BUILD_TYPE=Release \
-         -DBUILD_SHARED_LIBS=OFF
+         -DBUILD_SHARED_LIBS=OFF \
+         -DTBB_TEST=OFF
 make -j 12 target=ios
 
 cd ..
 
+# ios simulator build
+
+mkdir build_ios_sim && cd build_ios_sim
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../../ios.toolchain.cmake \
+         -DPLATFORM=SIMULATORARM64 \
+         -DBUILD_SHARED_LIBS=OFF \
+         -DTBB_TEST=OFF
+make -j 12 tareget=ios
+cd ..
+
+NAME=appleclang_16.0_cxx11_64_release
+SIMNAME=appleclang_16.0_cxx11_64_relwithdebinfo
+
 libtool -static -o tbb_macos.a build/$NAME/libtbb.a build/$NAME/libtbbmalloc.a
 libtool -static -o tbb_ios.a build_ios/$NAME/libtbb.a build_ios/$NAME/libtbbmalloc.a
+libtool -static -o tbb_ios_sim.a build_ios_sim/$SIMNAME/libtbb.a build_ios_sim/$SIMNAME/libtbbmalloc.a
 
 xcodebuild -create-xcframework \
            -library tbb_macos.a -headers include \
            -library tbb_ios.a -headers include \
+           -library tbb_ios_sim.a -headers include \
            -output ../tbb.xcframework
 
 cd ..
