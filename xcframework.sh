@@ -31,8 +31,10 @@ NAME=appleclang_16.0_cxx11_64_release
 
 # macOS build
 mkdir build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On
+cmake .. -DCMAKE_BUILD_TYPE=Release \
+         -DBUILD_SHARED_LIBS=OFF
 make -j 12 
+ctest
 
 cd ..
 
@@ -40,25 +42,21 @@ cd ..
 
 mkdir build_ios && cd build_ios
 cmake .. -DCMAKE_SYSTEM_NAME=iOS \
-      -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
-      -DCMAKE_BUILD_TYPE=Release -DTBB_BUILD_APPLE_FRAMEWORKS=On \
-      -DCMAKE_INSTALL_RPATH=@executable_path/Frameworks/tbb.framework/tbb
+         -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
+         -DCMAKE_BUILD_TYPE=Release \
+         -DBUILD_SHARED_LIBS=OFF
 make -j 12 target=ios
 
 cd ..
 
-xcodebuild -create-xcframework \
-           -framework build/$NAME/tbb.framework \
-           -framework build_ios/$NAME/tbb.framework \
-           -output ../tbb.xcframework
+libtool -static -o tbb_macos.a build/$NAME/libtbb.a build/$NAME/libtbbmalloc.a
+libtool -static -o tbb_ios.a build_ios/$NAME/libtbb.a build_ios/$NAME/libtbbmalloc.a
 
 xcodebuild -create-xcframework \
-           -framework build/$NAME/tbbmalloc.framework \
-           -framework build_ios/$NAME/tbbmalloc.framework \
-           -output ../tbbmalloc.xcframework
+           -library tbb_macos.a -headers include \
+           -library tbb_ios.a -headers include \
+           -output ../tbb.xcframework
 
 cd ..
 zip -r tbb.xcframework.zip tbb.xcframework
-zip -r tbbmalloc.xcframework.zip tbbmalloc.xcframework
 swift package compute-checksum tbb.xcframework.zip
-swift package compute-checksum tbbmalloc.xcframework.zip
